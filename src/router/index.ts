@@ -1,14 +1,30 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import DeckNew from '../views/DeckNew.vue'
+import Deck from '../views/Deck.vue';
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: { name: 'DeckNew' }
+  },
+  {
+    path: '/deck/new',
+    name: 'DeckNew',
+    meta: {
+      title: 'Cards'
+    },
+    component: DeckNew
+  },
+  {
+    path: '/deck/:id',
+    name: 'Deck',
+    meta: {
+      title: 'Ordered Pile'
+    },
+    component: Deck
   }
 ]
 
