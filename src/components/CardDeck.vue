@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue, Prop} from 'vue-property-decorator';
-import Card from './Card.vue';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import Card from '@/components/Card.vue';
 
 @Component({
   components: {
@@ -14,11 +14,15 @@ import Card from './Card.vue';
   }
 })
 export default class CardDeck extends Vue {
-  @Prop()
-  public cards = [{}];
+  @Prop({ type: Array, default: () => [] })
+  private cards!: []
+
 }
 </script>
 
 <style lang="scss">
-
+.card-deck {
+  margin-left: 30px;
+  padding-top: 30px;
+}
 </style>

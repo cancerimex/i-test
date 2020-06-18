@@ -5,8 +5,9 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator';
-import CardDeck from './../components/CardDeck.vue';
+import { Vue, Component } from 'vue-property-decorator';
+import CardDeck from '@/components/CardDeck.vue'
+import { Card } from '@/types'
 
 @Component({
   components: {
@@ -14,24 +15,15 @@ import CardDeck from './../components/CardDeck.vue';
   }
 })
 export default class Deck extends Vue {
-  deck = {};
-  cards = [{}];
-  // get deck from store
-  // this.store.getters.deck()
-
-  // parse deck
-
-  // Testing without API
-  mounted () {
-    console.log(this.$route.params);
-
-    this.deck = {
-      success: true,
-      deckId: 'hs0ps4wvf4k1', // deck-id from api
-      remaining: 52,
-      shuffled: true
+  
+  get deck() {
+    return {
+      id: 'hs0ps4wvf4k1', // deck-id from api
     };
-    this.cards = [
+  }
+
+  get cards(): Card[] {
+    return [
       {
         code: '2H',
         value: '2',
@@ -58,6 +50,15 @@ export default class Deck extends Vue {
         suit: 'CLUBS'
       }
     ];
+  }
+  // get deck from store
+  // this.store.getters.deck()
+
+  // parse deck
+
+  // Testing without API
+  mounted () {
+    console.log(this.$route.params);
   }
   
 }

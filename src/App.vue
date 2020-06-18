@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>CARDS</h1>
+      <h1>{{ title }}</h1>
     </header>
     <main>
       <router-view></router-view>
@@ -12,10 +12,17 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { deckService } from '@/services/api/deck-api'
 
 @Component
 export default class App extends Vue {
- 
+  get title (): string {
+    return this.$route.meta.title
+  }
+  mounted() {
+    console.log(process.env);
+    console.log(deckService.newDeck());
+  }
 }
 </script>
 

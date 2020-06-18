@@ -21,13 +21,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { InputCard, Rotation } from '@/types'
 
 @Component
 export default class DeckNew extends Vue {
   // Needs to be moved into a config file or something
-  ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-  suits = ['♥','♦','♠','♣'];
-  cards = [
+  
+  cards: InputCard[] = [
     { id: 1, value: '' },
     { id: 2, value: '' },
     { id: 3, value: '' },
@@ -39,7 +39,7 @@ export default class DeckNew extends Vue {
     { id: 9, value: '' },
     { id: 10, value: '' },
   ];
-  rotation = { value: '' };
+  rotation: Rotation = { value: '' };
 
   submit() {
 
